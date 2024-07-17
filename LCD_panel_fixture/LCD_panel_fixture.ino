@@ -195,6 +195,7 @@ void setup() {
   Serial.println("? for help");
 
   pinMode(IN1, INPUT);
+  pinMode(OUT_ON, OUTPUT);
   for (int i = 0; i < NP; i++) {
     pinMode(outputs[i], OUTPUT);
   }
