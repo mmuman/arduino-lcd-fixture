@@ -11,6 +11,8 @@ const int outputs[NP] = { 9, 10, 11, 3 };
 
 // BL_ON
 #define OUT_ON 12
+// TODO: add an inverted output, maybe some displays need it?
+//#define OUT_OFF 12
 
 // Potentiometer input
 #define IN1 A0
@@ -29,6 +31,13 @@ int settings[NP+1][2] {
 
 float rawValues[4];
 
+// Since the original controller board drives
+// the backlight PWM at 20 to 30kHz, we reconfigure
+// the timers to be in that range for platforms
+// we know about. There is a fallback code that
+// should still work thouh.
+
+// TODO: test fallback
 
 // cf. https://arduino.stackexchange.com/questions/19892/list-of-arduino-board-preprocessor-defines
 #if defined(ARDUINO_AVR_NANO) || defined(ARDUINO_AVR_UNO)
@@ -183,7 +192,7 @@ void handleSerial() {
 void setup() {
   Serial.begin(9600);
   Serial.println("<LCD Panel Fixture>");
-  //TODO: Serial.println("? for help");
+  Serial.println("? for help");
 
   pinMode(IN1, INPUT);
   for (int i = 0; i < NP; i++) {
