@@ -20,14 +20,15 @@ On the Power Supply Unit (PSU), we will need to identify at least:
 - the packlight PWM input,
 - an Power On / Backlight On signal, to force the PSU to activate.
 
-We might also want to use one of the PSUs to power the Arduino for us. For this we need to find a pin proving power. Ideally 5V, otherwise a step-down regulator will be required from a higher voltage. Either use an always-on PSU, or find the standby powerof another one.
+We might also want to use one of the PSUs to power the Arduino for us. For this we need to find a pin proving power. Ideally 5V, otherwise a step-down regulator will be required from a higher voltage. Either use an always-on PSU, or find the standby power of another one.
 
-XXX: 5V / 3.3V ?
-use a diode to drop 1.7V?
+The circuit has resistor dividers to support 5V and 3.3V outputs with jumpers.
 
 ### Known pinouts
 
 #### Dell 24"
+
+TODO
 
 #### Others?
 
@@ -41,13 +42,13 @@ For ease of installation and to limit interferences, it is recommended to reuse 
 
 The Sketch provides a serial interface to help with configuration. It accepts single letter commands followed by a newline:
 
-  1..4  Select output
-  l Select low setting
-  h Select high setting
-  +/- Change selected
-  d dump settings
-  D toggle debug
-  ? for help
+    1..4  Select output
+    l Select low setting
+    h Select high setting
+    +/- Change selected
+    d dump settings
+    D toggle debug
+    ? for help
 
 To apply a configuration, use the `dump` command, copy-paste the values in the sketch and recompile it.
 
